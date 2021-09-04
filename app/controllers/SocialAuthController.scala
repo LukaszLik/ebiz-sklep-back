@@ -29,7 +29,7 @@ class SocialAuthController @Inject()(scc: DefaultSilhouetteControllerComponents,
             authenticator <- authenticatorService.create(profile.loginInfo)
             value <- authenticatorService.init(authenticator)
 //            tutej dać localhost:3000
-            result <- authenticatorService.embed(value, Redirect(s"http://localhost:3000/?email=${profile.email.get}&authenticator=${URLDecoder.decode(value.toString.split(",")(1), "UTF-8")}"))
+            result <- authenticatorService.embed(value, Redirect(s"https://test2-324913.appspot.com/products/?email=${profile.email.get}&authenticator=${URLDecoder.decode(value.toString.split(",")(1), "UTF-8")}"))
           } yield {
             val Token(name, value) = CSRF.getToken.get
             result.withCookies(Cookie(name, value, httpOnly = false))
